@@ -31,7 +31,7 @@ chatgpt = ChatGPT()
 # domain root
 @app.route('/')
 def home():
-    return 'Hello, World!'
+    return 'I am Robot'
 
 @app.route("/webhook", methods=['POST'])
 def callback():
@@ -56,7 +56,7 @@ def handle_message(event):
         return
 
     working_status = True
-
+    line_bot_api.reply_message(vent.reply_token,"Hello")
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
