@@ -14,12 +14,13 @@ class ChatGPT:
         self.frequency_penalty = float(os.getenv("OPENAI_FREQUENCY_PENALTY", default = 0.5))
         self.presence_penalty = float(os.getenv("OPENAI_PRESENCE_PENALTY", default = 0.6))
         self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 240))
-        
+        global system_prompt
         with open("kw.txt", "r", encoding="utf-8") as f:
             for line in f:
                 system_prompt += line.strip()  # 去掉每行的換行
 
     def get_response(self):
+        global system_prompt
         response = openai.chat.completions.create(
         model=self.model,
         messages=[
