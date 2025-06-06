@@ -16,15 +16,17 @@ class ChatGPT:
         self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 240))
 
     def get_response(self):
-        response = openai.Completion.create(
-            model=self.model,
-            prompt=self.prompt.generate_prompt(),
-            temperature=self.temperature,
-            frequency_penalty=self.frequency_penalty,
-            presence_penalty=self.presence_penalty,
-            max_tokens=self.max_tokens
+        response = openai.chat.completions.create(
+        model=self.model,
+        messages=[
+            {"role": "user", "content": self.prompt.generate_prompt()}
+        ],
+        temperature=self.temperature,
+        frequency_penalty=self.frequency_penalty,
+        presence_penalty=self.presence_penalty,
+        max_tokens=self.max_tokens
         )
-        return response['choices'][0]['text'].strip()
+        return response.choices[0].message.content.strip()
 
     def add_msg(self, text):
         self.prompt.add_msg(text)
