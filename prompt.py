@@ -4,7 +4,7 @@ chat_language = os.getenv("INIT_LANGUAGE", default = "zh_TW")
 
 MSG_LIST_LIMIT = int(os.getenv("MSG_LIST_LIMIT", default = 20))
 LANGUAGE_TABLE = {
-  "zh": "嗨！",
+  "zh_TW": "哈囉！",
   "en": "Hi!"
 }
 
