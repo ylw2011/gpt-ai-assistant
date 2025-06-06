@@ -21,10 +21,10 @@ class ChatGPT:
         messages=[
             {"role": "user", "content": self.prompt.generate_prompt()}
         ],
-        temperature=self.temperature,
-        frequency_penalty=self.frequency_penalty,
-        presence_penalty=self.presence_penalty,
-        max_tokens=self.max_tokens
+        #temperature=self.temperature,
+        #frequency_penalty=self.frequency_penalty,
+        #presence_penalty=self.presence_penalty,
+        #max_tokens=self.max_tokens
         )
         return response.choices[0].message.content.strip()
 
