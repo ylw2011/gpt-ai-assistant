@@ -21,9 +21,11 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-line_bot_api = Configuration(os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
+config = Configuration(access_token=os.getenv("LINE_CHANNEL_ACCESS_TOKEN"))
+api_client = ApiClient(config)
+line_bot_api = MessagingApi(api_client)
 line_handler = WebhookHandler(os.getenv("LINE_CHANNEL_SECRET"))
-working_status = os.getenv("DEFALUT_TALKING", default = "true").lower() == "true"
+working_status = os.getenv("DEFAULT_TALKING", default = "true").lower() == "true"
 
 app = Flask(__name__)
 chatgpt = ChatGPT()
@@ -56,14 +58,12 @@ def handle_message(event):
         return
 
     working_status = True
-    line_bot_api.reply_message(vent.reply_token,"Hello")
+    line_bot_api.reply_message(event.reply_token,"Hello")
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
         chatgpt.add_msg(f"AI:{reply_msg}\n")
-        line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=reply_msg))
+        line_bot_api.reply_message(ReplyMessageRequest(eply_token=event.reply_token,messages=[TextMessage(text=reply_msg)]))
 
 
 if __name__ == "__main__":
