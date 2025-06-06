@@ -4,7 +4,7 @@ import os
 import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+system_prompt = "參考下列內容，回答問題："
 
 class ChatGPT:
     def __init__(self):
@@ -14,7 +14,7 @@ class ChatGPT:
         self.frequency_penalty = float(os.getenv("OPENAI_FREQUENCY_PENALTY", default = 0.5))
         self.presence_penalty = float(os.getenv("OPENAI_PRESENCE_PENALTY", default = 0.6))
         self.max_tokens = int(os.getenv("OPENAI_MAX_TOKENS", default = 240))
-        system_prompt = "參考下列內容，回答問題："
+        
         with open("kw.txt", "r", encoding="utf-8") as f:
             for line in f:
                 system_prompt += line.strip()  # 去掉每行的換行
