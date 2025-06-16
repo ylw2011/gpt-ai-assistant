@@ -71,6 +71,7 @@ def handle_message(event):
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
         chatgpt.add_msg(f"AI:{reply_msg}\n")      
         content=reply_msg.replace('\n','').replace('\r','')        
+        flex['body']['contents']['text']="abc"
         try:
             flex_message = FlexMessage(alt_text="Hello Ntcu", contents= FlexContainer.from_json(json.dumps(flex)))        
         except Exception as e:
