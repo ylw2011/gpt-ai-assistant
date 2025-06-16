@@ -1,0 +1,27 @@
+{
+  "type": "bubble",
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Hello",
+        "wrap": true
+      },
+      {
+        "type": "image",
+        "url": "https://dct.ntcu.edu.tw/files/site_info/Logo.png",
+        "size": "100%"
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "Ntcu Dct",
+          "uri": "https://dct.ntcu.edu.tw/index.php"
+        }
+      }
+    ]
+  }
+}
