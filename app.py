@@ -67,7 +67,7 @@ def handle_message(event):
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
         chatgpt.add_msg(f"AI:{reply_msg}\n")        
-        content="""{"type": "bubble","body": {"type": "box","layout": "vertical","contents": [{"type": "text","text": """
+        content="""{"type": "bubble","body": {"type": "box","layout": "vertical","contents": [{"type": "text","wrap": true,"text": """
         content=content+"\""+reply_msg+""""}]}}"""
         content.replace('\n','').replace('\r','')
         flex_message = FlexMessage(alt_text="Hello Ntcu", contents= FlexContainer.from_json(content))        
