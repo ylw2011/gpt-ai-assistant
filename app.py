@@ -71,8 +71,16 @@ def handle_message(event):
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
         chatgpt.add_msg(f"AI:{reply_msg}\n")      
         content=reply_msg.replace('\n','').replace('\r','')        
-        flex_message = FlexMessage(alt_text="Hello Ntcu", contents= FlexContainer.from_json(json.dumps(flex)))        
-        line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=flex_message))
+        try:
+            flex_message = FlexMessage(alt_text="Hello Ntcu", contents= FlexContainer.from_json(json.dumps(flex)))        
+        except Exception as e:
+            print("FlexContainer 轉換失敗:", e)
+            raise    
+        try:
+            line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[flex_message]))
+        except Exception as e:
+            print("回覆訊息失敗:", e)
+            raise
         #line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text=content)]))
         #line_bot_api.push_message(event.source.user_id,TextMessage(text="hello"))
 
