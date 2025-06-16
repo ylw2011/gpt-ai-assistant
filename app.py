@@ -72,7 +72,7 @@ def handle_message(event):
         #flex_message = FlexMessage(alt_text="Hello Ntcu", contents= FlexContainer.from_json(content))        
         #line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[flex_message]))
         #line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text=reply_msg)]))
-        line_bot_api.push_message(event.source.user_id,TextSendMessage(text=reply_msg))
+        line_bot_api.push_message(event.source.user_id,TextMessage(text=reply_msg))
 
 
 if __name__ == "__main__":
