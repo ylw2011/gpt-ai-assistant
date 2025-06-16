@@ -59,7 +59,8 @@ def handle_message(event):
 
     working_status = True
     app.logger.info("Process "+event.message.text)
-    #line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text="Hello")]))
+    line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text=\"{\"type\": \"flex\",\"altText\": \"測試\",\"contents\": {\"type\": \"bubble\",\"body\": {\"type\": \"box\",\"layout\": \"vertical\",\"contents\": [{\"type\": \"text\",\"text\": \"測試\",\"weight\": \"bold\",\"size\": \"xl\"}]}}}
+")]))
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
