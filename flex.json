@@ -11,15 +11,27 @@
       },
       {
         "type": "image",
-        "url": "https://dct.ntcu.edu.tw/files/site_info/Logo.png",
-        "size": "100%"
+        "url": "https://www.ntcu.edu.tw/Uploads/cis1.png",
+        "action": {
+          "type": "uri",
+          "label": "產品介紹",
+          "uri": "https://www.ntcu.edu.tw/"
+        }
       },
       {
         "type": "button",
         "action": {
           "type": "uri",
-          "label": "Ntcu Dct",
+          "label": "推薦商品",
           "uri": "https://dct.ntcu.edu.tw/index.php"
+        }
+      },
+      {
+        "type": "button",
+        "action": {
+          "type": "uri",
+          "label": "優惠商品",
+          "uri": "http://linecorp.com/"
         }
       }
     ]
