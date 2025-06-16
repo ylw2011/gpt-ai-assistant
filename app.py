@@ -66,34 +66,17 @@ def handle_message(event):
     if working_status:
         chatgpt.add_msg(f"Human:{event.message.text}?\n")
         reply_msg = chatgpt.get_response().replace("AI:", "", 1)
-        chatgpt.add_msg(f"AI:{reply_msg}\n")
-        #reply_msg="{\"type\": \"bubble\",\"body\": {\"type\": \"box\",\"layout\": \"vertical\",\"contents\": [{\"type\": \"text\",\"text\": \"hello, world\"}])}"       
-        flex_message = FlexSendMessage(alt_text="Hello Ntcu", contents={
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "hello, world"
-      }
-    ]
-  }
-})
-        line_bot_api.reply_message(event.reply_token,messages=FlexSendMessage(alt_text="Hello Ntcu", contents={
-  "type": "bubble",
-  "body": {
-    "type": "box",
-    "layout": "vertical",
-    "contents": [
-      {
-        "type": "text",
-        "text": "hello, world"
-      }
-    ]
-  }
-}))
+        chatgpt.add_msg(f"AI:{reply_msg}\n")        
+        content={
+            "type": "bubble",
+            "body": {
+            "type": "box",
+            "layout": "vertical",
+            "contents": [{"type": "text","text": "hello, world"}]
+            }
+            }
+        flex_message = FlexSendMessage(alt_text="Hello Ntcu", contents= content)
+        line_bot_api.reply_message(event.reply_token,messages=[flex_message])
         #line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text=reply_msg)]))
 
 
