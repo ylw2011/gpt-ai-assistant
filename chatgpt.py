@@ -4,7 +4,7 @@ import os
 import openai
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-system_prompt = "參考下列內容，回答問題："
+system_prompt = "扮演一個女性導覽人員。參考下列內容，會用熱情且積極的語氣回答問題："
 
 class ChatGPT:
     def __init__(self):
