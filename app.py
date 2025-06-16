@@ -16,6 +16,10 @@ from linebot.v3.webhooks import (
     MessageEvent,
     TextMessageContent
 )
+from linebot.models import (
+    FlexSendMessage, 
+    BubbleContainer
+)
 from chatgpt import ChatGPT
 import os
 from dotenv import load_dotenv
