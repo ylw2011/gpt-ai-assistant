@@ -18,7 +18,7 @@ from linebot.v3.webhooks import (
 )
 from linebot.models import (
     FlexSendMessage, 
-    BubbleContainer
+    FlexContainer
 )
 from chatgpt import ChatGPT
 import os
