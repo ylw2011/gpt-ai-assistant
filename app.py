@@ -75,9 +75,9 @@ def handle_message(event):
             "contents": [{"type": "text","text": "hello, world"}]
             }
             }
-        flex_message = FlexSendMessage(alt_text="Hello Ntcu", contents= content)
-        #line_bot_api.reply_message(event.reply_token,messages=[flex_message])
-        line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text=reply_msg)]))
+        flex_message = FlexSendMessage(alt_text="Hello Ntcu", contents= FlexContainer.from_json(content))
+        line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[flex_message]))
+        #line_bot_api.reply_message(ReplyMessageRequest(reply_token=event.reply_token,messages=[TextMessage(text=reply_msg)]))
 
 
 if __name__ == "__main__":
